@@ -7,8 +7,8 @@ class Botbuilder(object):
         self.name = "Dude"
         self.age = 0
         self.hunger = 50
-        self.memory = 8
-        self.sight = 8
+        self.memory = 16
+        self.sight = 5
         self.dna = 2
         self.fertile = 50
         self.babys = 0

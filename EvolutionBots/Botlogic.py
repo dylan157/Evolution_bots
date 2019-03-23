@@ -22,20 +22,22 @@ class Botlogic(object):
                 #This for loop generates an interger amount of moves to later test
                 move_generated = False
                 move_choice = ''
+                failed_attempts = 0
 
                 while not move_generated:
+                    if failed_attempts > 5: break
+
                     rand_udlr = randint(0, 3)
                     rand_step = randint(1, who.sight)
                     move_choice = str(rand_udlr)+str(rand_step)
 
                     if move_choice in thoughts:
+                        failed_attempts += 1
                         pass
+
                     else:
+                        thoughts.append(move_choice)
                         move_generated = True
-
-
-                thoughts.append(move_choice)
-
 
             for target in who.targets: #Check if generated moves land on targets. good to bad
 
@@ -208,9 +210,10 @@ class Botlogic(object):
         for bot in map.living_bots:
             if bot.life:
                 if bot.hunger <= 0:
-                        map.playerboard[bot.x],[bot.y] = map.death_icon
-                        map.object_board[bot.x],[bot.y] = map.death_icon
-                        map.memory_board[bot.x],[bot.y] = 0
+                        map.playerboard[bot.x][bot.y] = map.death_icon
+                        map.object_board[bot.x][bot.y] = map.death_icon
+                        map.memory_board[bot.x][bot.y] = 0
                         bot.life = False
+                        map.living_bots.remove(bot)
                 else:
                     map.memory_board[bot.x][bot.y] += 1 

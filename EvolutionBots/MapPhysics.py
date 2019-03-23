@@ -35,6 +35,9 @@ class MapPhysics(object):
 
 
     def print_board(self, board):
+
+        #print(board.__str__())
+
         for row in board:
             print "  ".join(row)
             print ""

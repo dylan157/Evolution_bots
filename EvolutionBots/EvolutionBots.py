@@ -1,12 +1,13 @@
-from random import randint
+#!/usr/bin/env python
+#Inspired by: www.reddit.com/r/cellular_automata
 from sys import platform
-import os
-import time
-import subprocess
+import os, time
+os.system("mode con: cols=185 lines=125")
+
 from MapPhysics import MapPhysics
 from Botlogic import Botlogic
 from Botbuilder import Botbuilder
-os.system("mode con: cols=185 lines=125")
+
 
 if platform == "linux" or platform == "linux2":
     clear = lambda: os.system('clear')
@@ -15,12 +16,11 @@ elif platform == "darwin":
 elif platform == "win32":
     clear = lambda: os.system('cls')
 
-map_object = MapPhysics(45, 35) # mapgen
-
+map_object = MapPhysics(30, 20) # mapgen
 bot_logic = Botlogic() #ai
 
 
-for bot in range(1): #Bot gen
+for bot in range(10): #Bot gen
     map_object.living_bots.append(Botbuilder(map_object))
 
 
@@ -42,14 +42,13 @@ while True:
 
         if map_object.time % 5 == 0: bot.hunger -= 1
 
+    time.sleep(0.1) 
+
+    clear()
 
     map_object.print_board(map_object.playerboard) #printboard
 
     bot_logic.bot_health_check(map_object) # health check
-
-    time.sleep(0.05)    
-
-    clear()
 
     map_object.tidy()
 
