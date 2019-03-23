@@ -47,7 +47,7 @@ while True:
 
     bot_logic.bot_health_check(map_object) # health check
 
-    time.sleep(0.1)    
+    time.sleep(0.05)    
 
     clear()
 

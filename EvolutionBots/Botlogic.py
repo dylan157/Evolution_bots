@@ -208,9 +208,9 @@ class Botlogic(object):
         for bot in map.living_bots:
             if bot.life:
                 if bot.hunger <= 0:
-                        map.playerboard[[bot.x],[bot.y]] = death_icon
-                        object_board[[bot.x],[bot.y]] = death_icon
-                        memory_board[[bot.x],[bot.y]] = 0
+                        map.playerboard[bot.x],[bot.y] = map.death_icon
+                        map.object_board[bot.x],[bot.y] = map.death_icon
+                        map.memory_board[bot.x],[bot.y] = 0
                         bot.life = False
                 else:
                     map.memory_board[bot.x][bot.y] += 1 
